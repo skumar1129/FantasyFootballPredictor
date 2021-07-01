@@ -13,7 +13,7 @@ import { PlayerContext } from '../context/playerContext';
 const Search = () => {
     const [name, setName] = useState('');
     const [scoreType, setScoreType] = useState('');
-    const { getFantasyScore, getPprScore, getDraftKingScore, getFanDuelScore } = useContext(PlayerContext);
+    const { getFantasyScore, getPprScore, getDraftKingScore, getFanDuelScore, noResult } = useContext(PlayerContext);
     
     const grabName = (playerName) => {
         setName(playerName);
@@ -35,6 +35,8 @@ const Search = () => {
                 getDraftKingScore(data);
             } else if (data.fanDuelScore) {
                 getFanDuelScore(data);
+            } else {
+                noResult();
             }
         })
         .catch(err => console.log(err));

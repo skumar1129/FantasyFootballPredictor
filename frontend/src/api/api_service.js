@@ -76,12 +76,25 @@ const getScoreUrl = (type) => {
 export const grabScore = async (player, type) => {
     const playerRef = db.collection('players').doc(player);
     const data = await playerRef.get();
-    let {teamName, ...postBody} = data.data()
-    postBody = formatPosition(postBody);
-    const postUrl = getScoreUrl(type);
-    return axios.post(postUrl, postBody, {
-        headers: headers
-    }).catch(err => {
-        throw new Error(`Score error ${err}`)
-    });
+    if (data.data()) {
+        alert(`Found ${type} results for ${player}`)
+        let {teamName, ...postBody} = data.data()
+        postBody = formatPosition(postBody);
+        const postUrl = getScoreUrl(type);
+        return axios.post(postUrl, postBody, {
+            headers: headers
+        }).catch(err => {
+            throw new Error(`Score error ${err}`)
+        });
+    } else {
+        alert(`Error looking up ${player}`);
+        return({
+            data: {
+                fantasyScore: undefined,
+                pprScore: undefined,
+                draftKingScore: undefined,
+                fanDuelScore: undefined
+            }
+        });
+    }
 }

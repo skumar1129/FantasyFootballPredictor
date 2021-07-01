@@ -42,6 +42,13 @@ export const PlayerProvider = ({children}) => {
         });
     }
 
+    async function noResult() {  
+        await dispatch({
+            type: 'Default',
+            payload: undefined
+        });
+    }
+
     return (
         <PlayerContext.Provider
         value={
@@ -50,7 +57,8 @@ export const PlayerProvider = ({children}) => {
                 getFantasyScore, 
                 getPprScore, 
                 getDraftKingScore,
-                getFanDuelScore
+                getFanDuelScore,
+                noResult
             }
         }>
             {children}

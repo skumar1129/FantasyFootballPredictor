@@ -8,7 +8,7 @@ const reducer = (state, action) => {
                 pprScore: 0,
                 draftKingScore: 0,
                 fanDuelScore: 0
-            }
+            };
             return state;
         case 'PPR_Score':
             state = {
@@ -17,7 +17,7 @@ const reducer = (state, action) => {
                 fantasyScore: 0,
                 draftKingScore: 0,
                 fanDuelScore: 0
-            }
+            };
             return state;
         case 'DraftKing_Score':
             state = {
@@ -26,7 +26,7 @@ const reducer = (state, action) => {
                 fantasyScore: 0,
                 pprScore: 0,
                 fanDuelScore: 0
-            }
+            };
             return state;
         case 'FanDuel_Score':
             state = {
@@ -35,9 +35,16 @@ const reducer = (state, action) => {
                 fantasyScore: 0,
                 pprScore: 0,
                 draftKingScore: 0,
-            }
+            };
             return state;
         default:
+            state = {
+                name: '',
+                fantasyScore: 0,
+                pprScore: 0,
+                draftKingScore: 0,
+                fanDuelScore: 0
+            };
             return state;
     }
 };
