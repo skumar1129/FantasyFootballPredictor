@@ -13,10 +13,10 @@ firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 
-# credentials = service_account.Credentials.from_service_account_file(
-#     './fantasy_football_bucket.json')
+credentials = service_account.Credentials.from_service_account_file(
+    './fantasy_football_bucket.json')
 
-# storage_client = storage.Client(credentials=credentials)
+storage_client = storage.Client(credentials=credentials)
 
 year = 1995
 for x in range(year,2021):
