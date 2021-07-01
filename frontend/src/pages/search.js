@@ -23,23 +23,21 @@ const Search = () => {
         setScoreType(type);
     }
 
-    const getPlayer = () => {
-        grabScore(name, scoreType)
-        .then(res => res.data)
-        .then(data => {
-            if (data.fantasyScore) {
-                getFantasyScore(data);
-            } else if (data.pprScore) {
-                getPprScore(data);
-            } else if (data.draftKingScore) {
-                getDraftKingScore(data);
-            } else if (data.fanDuelScore) {
-                getFanDuelScore(data);
-            } else {
-                noResult();
-            }
-        })
-        .catch(err => console.log(err));
+    const getPlayer = async () => {
+        const playerData = await grabScore(name, scoreType);
+        const data = playerData.data;
+        if (data.fantasyScore) {
+            await getFantasyScore(data);
+        } else if (data.pprScore) {
+            await getPprScore(data);
+        } else if (data.draftKingScore) {
+            await getDraftKingScore(data);
+        } else if (data.fanDuelScore) {
+            await getFanDuelScore(data);
+        } else {
+            await noResult();
+        }
+        
     }
     return(
         <div className='search-page'>
