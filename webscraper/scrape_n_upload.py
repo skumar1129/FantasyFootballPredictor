@@ -13,10 +13,10 @@ firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 
-credentials = service_account.Credentials.from_service_account_file(
-    './fantasy_football_bucket.json')
+# credentials = service_account.Credentials.from_service_account_file(
+#     './fantasy_football_bucket.json')
 
-storage_client = storage.Client(credentials=credentials)
+# storage_client = storage.Client(credentials=credentials)
 
 year = 1995
 for x in range(year,2021):
@@ -120,7 +120,7 @@ with open('./fantasyStats2020.json') as f:
 player_data_2020 = [x for x in player_data_2020 if x['position'] != 'N/A']
 
 for data in player_data_2020:
-    doc_ref = db.collection('players').document(data['name'])
+    doc_ref = db.collection('players').document(data['name'].strip())
     doc_ref.set({
         'name': data['name'],
         'teamName': data['teamName'],
