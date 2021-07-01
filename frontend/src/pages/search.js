@@ -36,9 +36,9 @@ const Search = () => {
             await getFanDuelScore(data);
         } else {
             await noResult();
-        }
-        
+        }   
     }
+    
     return(
         <div className='search-page'>
             <div className='jumbotron'>
