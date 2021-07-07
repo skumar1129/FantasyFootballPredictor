@@ -25,7 +25,7 @@ def fantasy_score():
     info = info.drop('name')
     info = np.array(info).reshape(1, -1)
     score = fantasy_model.predict(info)
-    return jsonify({'fantasyScore': abs(score[0]), 'name': body['name']})
+    return jsonify({'fantasyScore': score[0], 'name': body['name']})
     
     
 
@@ -38,7 +38,7 @@ def ppr_score():
     info = info.drop('name')
     info = np.array(info).reshape(1, -1)
     score = ppr_model.predict(info)
-    return jsonify({'pprScore': abs(score[0]), 'name': body['name']})
+    return jsonify({'pprScore': score[0], 'name': body['name']})
 
 @app.route('/draftkingscore', methods=['POST'])
 @cross_origin()
@@ -49,7 +49,7 @@ def draft_kings_score():
     info = info.drop('name')
     info = np.array(info).reshape(1, -1)
     score = draft_kings_model.predict(info) 
-    return jsonify({'draftKingScore': abs(score[0]), 'name': body['name']})
+    return jsonify({'draftKingScore': score[0], 'name': body['name']})
    
 @app.route('/fanduelscore', methods=['POST'])
 @cross_origin()
@@ -60,7 +60,7 @@ def fan_duel_score():
     info = info.drop('name')
     info = np.array(info).reshape(1, -1)
     score = fan_duel_model.predict(info)
-    return jsonify({'fanDuelScore': abs(score[0]), 'name': body['name']})
+    return jsonify({'fanDuelScore': score[0], 'name': body['name']})
 
 def format_body(body):
     return {
